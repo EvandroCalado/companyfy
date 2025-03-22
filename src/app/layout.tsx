@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { Noto_Sans } from 'next/font/google';
 
 import './globals.css';
 
-const primary = Roboto({
+const primary = Noto_Sans({
   variable: '--font-primary',
   subsets: ['latin'],
 });
