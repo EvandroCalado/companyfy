@@ -1,6 +1,15 @@
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from '@clerk/nextjs';
+
 import './globals.css';
 
 const primary = Noto_Sans({
@@ -19,9 +28,20 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang='pt-BR'>
-      <body className={`${primary.variable} antialiased`}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang='pt-BR'>
+        <body className={`${primary.variable} antialiased`}>
+          <SignedOut>
+            <SignInButton />
+            <SignUpButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 };
 
