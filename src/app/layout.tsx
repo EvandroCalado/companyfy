@@ -1,14 +1,8 @@
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from '@clerk/nextjs';
+import { ptBR } from '@clerk/localizations';
+import { ClerkProvider } from '@clerk/nextjs';
 
 import './globals.css';
 
@@ -28,18 +22,18 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      localization={ptBR}
+      appearance={{
+        elements: {
+          formButtonPrimary:
+            'bg-primary text-primary-foreground hover:bg-primary/90',
+          footerActionLink: 'text-red-500',
+        },
+      }}
+    >
       <html lang='pt-BR'>
-        <body className={`${primary.variable} antialiased`}>
-          <SignedOut>
-            <SignInButton />
-            <SignUpButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
-        </body>
+        <body className={`${primary.variable} antialiased`}>{children}</body>
       </html>
     </ClerkProvider>
   );
