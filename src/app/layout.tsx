@@ -22,16 +22,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <ClerkProvider
-      localization={ptBR}
-      appearance={{
-        elements: {
-          formButtonPrimary:
-            'bg-primary text-primary-foreground hover:bg-primary/90',
-          footerActionLink: 'text-red-500',
-        },
-      }}
-    >
+    <ClerkProvider localization={ptBR}>
       <html lang='pt-BR'>
         <body className={`${primary.variable} antialiased`}>{children}</body>
       </html>
