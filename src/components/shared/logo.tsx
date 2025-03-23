@@ -13,7 +13,7 @@ export const Logo = ({ className, ...props }: React.ComponentProps<'a'>) => {
     >
       <ChartNoAxesCombined className='bg-foreground text-background size-8 rounded-full p-1' />
       <h1 className='text-xl'>
-        Company<strong className='text-primary'>fy</strong>{' '}
+        Company<strong className='text-primary'>Fy</strong>{' '}
       </h1>
     </Link>
   );
