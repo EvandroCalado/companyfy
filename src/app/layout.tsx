@@ -12,7 +12,7 @@ const primary = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Companyfy',
+  title: 'CompanyFy',
   description: 'Gestão de empresas',
 };
 
