@@ -1,5 +1,7 @@
 import { SignedIn, UserButton } from '@clerk/nextjs';
 
+import { Button } from '@/components/ui/button';
+
 const HomePage = () => {
   return (
     <main>
@@ -7,6 +9,7 @@ const HomePage = () => {
       <SignedIn>
         <UserButton />
       </SignedIn>
+      <Button>Teste</Button>
     </main>
   );
 };
