@@ -2,7 +2,7 @@
 
 import * as Clerk from '@clerk/elements/common';
 import * as SignIn from '@clerk/elements/sign-in';
-import { Loader } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 import { Logo } from '@/components/shared/logo';
 import { Button } from '@/components/ui/button';
@@ -17,6 +17,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+
+Loader2;
 
 const SignInPage = () => {
   return (
@@ -46,7 +48,7 @@ const SignInPage = () => {
                           <Clerk.Loading scope='provider:github'>
                             {(isLoading) =>
                               isLoading ? (
-                                <Loader className='size-4 animate-spin' />
+                                <Loader2 className='size-4 animate-spin' />
                               ) : (
                                 <>
                                   <Clerk.Icon className='size-4' />
@@ -67,7 +69,7 @@ const SignInPage = () => {
                           <Clerk.Loading scope='provider:google'>
                             {(isLoading) =>
                               isLoading ? (
-                                <Loader className='size-4 animate-spin' />
+                                <Loader2 className='size-4 animate-spin' />
                               ) : (
                                 <>
                                   <Clerk.Icon className='size-4' />
@@ -104,7 +106,7 @@ const SignInPage = () => {
                           <Clerk.Loading>
                             {(isLoading) => {
                               return isLoading ? (
-                                <Loader className='size-4 animate-spin' />
+                                <Loader2 className='size-4 animate-spin' />
                               ) : (
                                 'Continue'
                               );
@@ -160,7 +162,7 @@ const SignInPage = () => {
                           <Clerk.Loading>
                             {(isLoading) => {
                               return isLoading ? (
-                                <Loader className='size-4 animate-spin' />
+                                <Loader2 className='size-4 animate-spin' />
                               ) : (
                                 'Voltar'
                               );
@@ -204,7 +206,7 @@ const SignInPage = () => {
                             <Clerk.Loading>
                               {(isLoading) => {
                                 return isLoading ? (
-                                  <Loader className='size-4 animate-spin' />
+                                  <Loader2 className='size-4 animate-spin' />
                                 ) : (
                                   'Continue'
                                 );
@@ -286,7 +288,7 @@ const SignInPage = () => {
                             <Clerk.Loading>
                               {(isLoading) => {
                                 return isLoading ? (
-                                  <Loader className='size-4 animate-spin' />
+                                  <Loader2 className='size-4 animate-spin' />
                                 ) : (
                                   'Continue'
                                 );
