@@ -11,7 +11,7 @@ export const Logo = ({ className, ...props }: React.ComponentProps<'a'>) => {
       className={cn('flex items-center gap-2', className)}
       {...props}
     >
-      <ChartNoAxesCombined className='bg-foreground text-background size-8 rounded-full p-1' />
+      <ChartNoAxesCombined className='bg-primary text-background size-8 rounded-full p-1' />
       <h1 className='text-xl'>
         Company<strong className='text-primary'>Fy</strong>{' '}
       </h1>
