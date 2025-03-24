@@ -1,15 +1,11 @@
-import { SignedIn, UserButton } from '@clerk/nextjs';
-
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const HomePage = () => {
   return (
-    <main>
-      <h1 className='flex text-3xl'>Home</h1>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-      <Button>Teste</Button>
+    <main className='flex min-h-screen flex-col'>
+      <Link href='/dashboard' className='underline underline-offset-4'>
+        Dashboard
+      </Link>
     </main>
   );
 };
