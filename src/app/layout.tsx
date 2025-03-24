@@ -6,6 +6,8 @@ import { ClerkProvider } from '@clerk/nextjs';
 
 import './globals.css';
 
+import { ThemeProvider } from './theme-provider';
+
 const primary = Noto_Sans({
   variable: '--font-primary',
   subsets: ['latin'],
@@ -23,8 +25,12 @@ const RootLayout = ({
 }>) => {
   return (
     <ClerkProvider localization={ptBR}>
-      <html lang='pt-BR'>
-        <body className={`${primary.variable} antialiased`}>{children}</body>
+      <html lang='pt-BR' suppressHydrationWarning>
+        <body className={`${primary.variable} antialiased`}>
+          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+            {children}
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
