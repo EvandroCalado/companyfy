@@ -31,7 +31,7 @@ export const SideMenu = () => {
   return (
     <div
       className={cn(
-        'bg-foreground text-muted relative hidden h-full w-[280px] flex-col px-5 py-10 transition-all duration-300 md:flex',
+        'dark:bg-card bg-muted-foreground/10 text-muted relative hidden h-full w-[280px] flex-col px-5 py-10 transition-all duration-300 md:flex',
         {
           'w-[80px]': !isOpenMenu,
         },
@@ -39,7 +39,7 @@ export const SideMenu = () => {
     >
       <Button
         size='icon'
-        className='bg-foreground hover:bg-primary absolute top-5 -right-4 rounded-full'
+        className='bg-background hover:bg-card text-muted-foreground absolute top-5 -right-4 rounded-full'
         onClick={() => setIsOpenMenu(!isOpenMenu)}
       >
         <ChevronLeft
@@ -49,16 +49,16 @@ export const SideMenu = () => {
         />
       </Button>
 
-      <h1 className='text-primary mb-8 flex items-center justify-center text-center text-2xl font-semibold tracking-tight'>
+      <h1 className='text-muted-foreground mb-8 flex items-center justify-center text-center text-2xl font-semibold tracking-tight'>
         <span
-          className={cn('text-primary-foreground', {
+          className={cn('', {
             'invisible hidden opacity-0': !isOpenMenu,
             'visible inline-block opacity-100': isOpenMenu,
           })}
         >
           Company
         </span>
-        <span className='font-bold'>Fy</span>
+        <span className='text-primary font-bold'>Fy</span>
       </h1>
 
       <div className='flex h-full flex-1 flex-col justify-between'>
@@ -69,9 +69,15 @@ export const SideMenu = () => {
                 <TooltipTrigger asChild>
                   <Button
                     asChild
-                    className={cn('bg-foreground w-full justify-start', {
-                      'bg-primary': pathname.startsWith(link.href),
-                    })}
+                    className={cn(
+                      'text-muted-foreground hover:text-primary relative w-full justify-start bg-transparent p-0 shadow-none hover:bg-transparent',
+                      'hover:before:bg-primary hover:before:absolute hover:before:-left-5 hover:before:h-full hover:before:w-1 hover:before:rounded-r-full hover:before:transition-all hover:before:duration-300 hover:before:content-[""]',
+
+                      {
+                        'text-primary before:bg-primary before:absolute before:-left-5 before:h-full before:w-1 before:rounded-r-md before:transition-all before:duration-300 before:content-[""]':
+                          pathname.startsWith(link.href),
+                      },
+                    )}
                   >
                     <Link href={link.href}>
                       {link.icon}{' '}
@@ -101,7 +107,7 @@ export const SideMenu = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                className='bg-muted-foreground/20 justify-start'
+                className='bg-muted-foreground/30 justify-start'
                 onClick={() => signOut({ redirectUrl: '/sign-in' })}
               >
                 <LogOut />
