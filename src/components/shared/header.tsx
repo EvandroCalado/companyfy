@@ -6,6 +6,7 @@ import { Search } from 'lucide-react';
 
 import { Input } from '../ui/input';
 import { DarkMode } from './dark-mode';
+import { MobileMenu } from './mobile-menu';
 
 export const Header = () => {
   const pathname = usePathname();
@@ -14,7 +15,10 @@ export const Header = () => {
 
   return (
     <header className='flex items-center justify-between gap-2 border-b p-5'>
-      <h1 className='text-2xl font-semibold capitalize'>{routeName}</h1>
+      <div className='flex items-center gap-2'>
+        <MobileMenu />
+        <h1 className='text-2xl font-semibold capitalize'>{routeName}</h1>
+      </div>
 
       <div className='flex w-full max-w-sm items-center gap-2'>
         <div className='relative w-full'>

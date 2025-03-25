@@ -136,7 +136,7 @@ export const SideMenu = () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button className='justify-start bg-transparent p-0 transition-all duration-300 hover:bg-transparent'>
+            <Button className='justify-start bg-transparent p-0 shadow-none transition-all duration-300 hover:bg-transparent'>
               {isLoaded ? (
                 <Avatar>
                   <AvatarImage src={user?.imageUrl} className='m-0' />
@@ -146,7 +146,7 @@ export const SideMenu = () => {
                   </AvatarFallback>
                 </Avatar>
               ) : (
-                <Skeleton className='size-8 rounded-full' />
+                <Skeleton className='bg-muted-foreground/30 size-8 rounded-full' />
               )}
               {isLoaded ? (
                 <span
@@ -158,7 +158,7 @@ export const SideMenu = () => {
                   {user?.firstName} {user?.lastName}
                 </span>
               ) : (
-                <Skeleton className='h-3 w-28' />
+                <Skeleton className='bg-muted-foreground/30 h-3 w-28' />
               )}
             </Button>
           </TooltipTrigger>
