@@ -1,13 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useClerk, useUser } from '@clerk/nextjs';
 import { LogOut, Menu } from 'lucide-react';
 
-import { links } from '@/lib/links';
-import { cn } from '@/lib/utils';
+import { menuLinks } from '@/lib/links';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Separator } from '../ui/separator';
@@ -21,6 +19,7 @@ import {
 } from '../ui/sheet';
 import { Skeleton } from '../ui/skeleton';
 import { Logo } from './logo';
+import { NavGroup } from './nav-group';
 
 export const MobileMenu = () => {
   const { user, isLoaded } = useUser();
@@ -43,27 +42,9 @@ export const MobileMenu = () => {
           </SheetHeader>
 
           <div className='flex h-full flex-1 flex-col justify-between p-4'>
-            <nav className='space-y-2'>
-              {links.map((link) => (
-                <Button
-                  key={link.id}
-                  asChild
-                  className={cn(
-                    'text-muted-foreground hover:text-primary relative w-full justify-start bg-transparent p-0 shadow-none hover:bg-transparent',
-                    'hover:before:bg-primary hover:before:absolute hover:before:-left-4 hover:before:h-full hover:before:w-1 hover:before:rounded-r-full hover:before:transition-all hover:before:duration-300 hover:before:content-[""]',
-
-                    {
-                      'text-primary before:bg-primary before:absolute before:-left-4 before:h-full before:w-1 before:rounded-r-md before:transition-all before:duration-300 before:content-[""]':
-                        pathname.startsWith(link.href),
-                    },
-                  )}
-                >
-                  <Link href={link.href}>
-                    {link.icon} <span>{link.title}</span>
-                  </Link>
-                </Button>
-              ))}
-            </nav>
+            {menuLinks.map((links, index) => (
+              <NavGroup key={index} menuLinks={links} />
+            ))}
 
             <Button
               className='bg-muted-foreground/30 justify-start'

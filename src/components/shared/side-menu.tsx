@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useClerk, useUser } from '@clerk/nextjs';
 import { ChevronLeft, LogOut } from 'lucide-react';
 
-import { links } from '@/lib/links';
+import { menuLinks } from '@/lib/links';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
@@ -19,6 +18,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '../ui/tooltip';
+import { NavGroup } from './nav-group';
 
 export const SideMenu = () => {
   const { user, isLoaded } = useUser();
@@ -51,9 +51,9 @@ export const SideMenu = () => {
 
       <h1 className='text-muted-foreground mb-8 flex items-center justify-center text-center text-2xl font-semibold tracking-tight'>
         <span
-          className={cn('', {
+          className={cn('transition-all duration-300', {
             'invisible hidden opacity-0': !isOpenMenu,
-            'visible inline-block opacity-100': isOpenMenu,
+            'visible opacity-100': isOpenMenu,
           })}
         >
           Company
@@ -62,46 +62,9 @@ export const SideMenu = () => {
       </h1>
 
       <div className='flex h-full flex-1 flex-col justify-between'>
-        <nav className='space-y-2'>
-          {links.map((link) => (
-            <TooltipProvider key={link.id}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    asChild
-                    className={cn(
-                      'text-muted-foreground hover:text-primary relative w-full justify-start bg-transparent p-0 shadow-none hover:bg-transparent',
-                      'hover:before:bg-primary hover:before:absolute hover:before:-left-5 hover:before:h-full hover:before:w-1 hover:before:rounded-r-full hover:before:transition-all hover:before:duration-300 hover:before:content-[""]',
-
-                      {
-                        'text-primary before:bg-primary before:absolute before:-left-5 before:h-full before:w-1 before:rounded-r-md before:transition-all before:duration-300 before:content-[""]':
-                          pathname.startsWith(link.href),
-                      },
-                    )}
-                  >
-                    <Link href={link.href}>
-                      {link.icon}{' '}
-                      <span
-                        className={cn({
-                          hidden: !isOpenMenu,
-                        })}
-                      >
-                        {link.title}
-                      </span>
-                    </Link>
-                  </Button>
-                </TooltipTrigger>
-
-                <TooltipContent
-                  side='right'
-                  className={cn({ hidden: isOpenMenu })}
-                >
-                  {link.title}
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          ))}
-        </nav>
+        {menuLinks.map((links, index) => (
+          <NavGroup key={index} isOpenMenu={isOpenMenu} menuLinks={links} />
+        ))}
 
         <TooltipProvider>
           <Tooltip>
