@@ -1,13 +1,14 @@
 import {
+  Building2,
   ChartNetwork,
   ChartNoAxesCombined,
-  Factory,
   Info,
   MoveDownRight,
   MoveUpRight,
   TrendingUp,
 } from 'lucide-react';
 
+import { CustomIcon } from '../shared/custom-icon';
 import { Badge } from '../ui/badge';
 import {
   Card,
@@ -27,7 +28,7 @@ const data = [
   {
     id: 1,
     average: 19,
-    icon: <Factory />,
+    icon: Building2,
     title: 'Companhias criadas',
     tooltipText: 'Companhias criadas',
     total: 10,
@@ -35,7 +36,7 @@ const data = [
   {
     id: 2,
     average: 30,
-    icon: <ChartNoAxesCombined />,
+    icon: ChartNoAxesCombined,
     title: 'Total de receita',
     tooltipText: 'Total de receita',
     total: 50,
@@ -43,7 +44,7 @@ const data = [
   {
     id: 3,
     average: 80,
-    icon: <ChartNetwork />,
+    icon: ChartNetwork,
     title: 'Balanço geral',
     tooltipText: 'Balanço geral',
     total: 100,
@@ -52,15 +53,13 @@ const data = [
 
 export const DashboardCards = () => {
   return (
-    <div className='grid h-fit w-full gap-4 p-5 md:grid-cols-2 lg:grid-cols-3'>
+    <section className='grid h-fit w-full gap-4 p-5 md:grid-cols-2 lg:grid-cols-3'>
       {data.map((item) => (
         <Card key={item.id}>
           <CardHeader className='flex items-center justify-between'>
             <CardTitle>
               <div className='flex items-center gap-2'>
-                <span className='bg-border text-muted-foreground flex h-9 w-9 items-center justify-center rounded-md'>
-                  {item.icon}
-                </span>
+                <CustomIcon icon={item.icon} />
                 <h3>{item.title}</h3>
               </div>
             </CardTitle>
@@ -93,6 +92,6 @@ export const DashboardCards = () => {
           </CardContent>
         </Card>
       ))}
-    </div>
+    </section>
   );
 };
