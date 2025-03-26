@@ -11,7 +11,7 @@ import {
 export const DashboardCustomersTable = () => {
   return (
     <Table>
-      <TableCaption>Uma lista de clientes.</TableCaption>
+      <TableCaption>Lista de clientes.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className='w-[100px]'>Status</TableHead>
