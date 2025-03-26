@@ -1,7 +1,28 @@
 import { Users } from 'lucide-react';
 
 import { CustomIcon } from '../shared/custom-icon';
-import { DashboardCustomersTable } from './dashboard-customers-table';
+import { columns, DashboardCustomersTable } from './dashboard-customers-table';
+
+const data = [
+  {
+    id: '1',
+    amount: 100,
+    status: 'pending' as const,
+    email: 'm@example.com',
+  },
+  {
+    id: '2',
+    amount: 100,
+    status: 'pending' as const,
+    email: 'm@example.com',
+  },
+  {
+    id: '3',
+    amount: 100,
+    status: 'pending' as const,
+    email: 'm@example.com',
+  },
+];
 
 export const DashboardLastCustomers = () => {
   return (
@@ -11,7 +32,7 @@ export const DashboardLastCustomers = () => {
         <h2 className='text-xl font-semibold'>Últimos clientes</h2>
       </div>
 
-      <DashboardCustomersTable />
+      <DashboardCustomersTable data={data} columns={columns} />
     </section>
   );
 };
